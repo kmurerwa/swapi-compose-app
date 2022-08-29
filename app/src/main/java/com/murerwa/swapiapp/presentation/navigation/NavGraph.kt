@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.murerwa.swapiapp.presentation.screens.films.HomeScreen
+import com.murerwa.swapiapp.presentation.screens.main.MainScreen
 
 @Composable
 fun SetUpNavGraph(
@@ -12,25 +12,12 @@ fun SetUpNavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = NavScreens.Home.route
+        startDestination = NavScreens.Main.route
     ) {
         composable(
-            route = NavScreens.Home.route
+            route = NavScreens.Main.route
         ) {
-            HomeScreen(navController)
+            MainScreen()
         }
-//        composable(
-//            route = Screen.Detail.route,
-//            arguments = listOf(
-//                navArgument(CHARACTER_ARGUMENT_KEY) {
-//                    type = CharacterItemParamType()
-//                }
-//            )
-//        ) {
-//            val passedCharacter  = it.arguments
-//                ?.getParcelable(CHARACTER_ARGUMENT_KEY) as CharacterItem?
-//
-//            DetailScreen(navController, passedCharacter)
-//        }
     }
 }

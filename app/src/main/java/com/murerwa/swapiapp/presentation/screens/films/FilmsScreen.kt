@@ -24,7 +24,7 @@ import com.murerwa.swapiapp.presentation.screens.films.cards.FilmCard
 import com.murerwa.swapiapp.presentation.theme.MaroonPrimary
 
 @Composable
-fun HomeScreen(
+fun FilmsScreen(
     navController: NavHostController,
     viewModel: FilmViewModel = getViewModel()
 ) {
@@ -88,6 +88,6 @@ fun HomeScreen(
 
 @Preview
 @Composable
-fun HomeScreenPreview() {
-    HomeScreen(rememberNavController())
+fun FilmsScreenPreview() {
+    FilmsScreen(rememberNavController())
 }
