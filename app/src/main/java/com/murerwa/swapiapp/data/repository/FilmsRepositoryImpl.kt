@@ -1,19 +1,20 @@
 package com.murerwa.swapiapp.data.repository
 
 import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo3.api.ApolloResponse
 import com.apollographql.apollo3.api.Query
 import com.apollographql.apollo3.exception.ApolloException
 import com.murerwa.swapiapp.FilmsQuery
+import com.murerwa.swapiapp.data.network.BaseRepository
+import com.murerwa.swapiapp.data.network.NetworkResult
 import com.murerwa.swapiapp.domain.repository.FilmsRepository
 import timber.log.Timber
 
 class FilmsRepositoryImpl(
     private val apolloClient: ApolloClient
-): FilmsRepository {
-    override suspend fun getFilms(): FilmsQuery.Data? {
-        val response = apolloClient.query(FilmsQuery()).execute()
-
-        return response.data
+): FilmsRepository, BaseRepository() {
+    override suspend fun getFilms(): NetworkResult<ApolloResponse<FilmsQuery.Data>> {
+        return safeApiCall { apolloClient.query(FilmsQuery()).execute() }
     }
 
 }
