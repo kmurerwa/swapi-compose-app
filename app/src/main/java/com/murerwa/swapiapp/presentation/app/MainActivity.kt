@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.compose.rememberNavController
 import com.murerwa.swapiapp.presentation.navigation.SetUpNavGraph
+import com.murerwa.swapiapp.presentation.screens.main.MainScreen
 import com.murerwa.swapiapp.presentation.theme.SWAPIAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -12,9 +13,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             SWAPIAppTheme {
-                val navController = rememberNavController()
-
-                SetUpNavGraph(navController = navController)
+//                val navController = rememberNavController()
+//
+//                SetUpNavGraph(navController = navController)
+                MainScreen()
             }
         }
     }

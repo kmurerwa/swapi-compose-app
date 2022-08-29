@@ -3,11 +3,13 @@ package com.murerwa.swapiapp.presentation.screens.main
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -17,12 +19,27 @@ import androidx.navigation.compose.rememberNavController
 import com.murerwa.swapiapp.presentation.common.BottomBarScreen
 import com.murerwa.swapiapp.presentation.navigation.BottomNavGraph
 import com.murerwa.swapiapp.presentation.theme.MaroonPrimary
+import com.murerwa.swapiapp.presentation.theme.YellowPrimary
+import java.time.Year
 
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
 
     Scaffold(
+//        topBar = {
+//            TopAppBar(
+//                backgroundColor = MaroonPrimary,
+//                title = {
+//                    Text(
+//                        text = "",
+//                        fontSize = 24.sp,
+//                        fontWeight = FontWeight.Medium,
+//                        color = Color.White
+//                    )
+//                },
+//            )
+//        },
         bottomBar = {
             BottomBar(navController = navController)
         }
@@ -36,6 +53,8 @@ fun BottomBar(navController: NavHostController) {
     val screens = listOf(
         BottomBarScreen.Films,
         BottomBarScreen.Characters,
+        BottomBarScreen.Planets,
+        BottomBarScreen.Starships
     )
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -66,14 +85,15 @@ fun RowScope.AddItem(
         selected = currentDestination?.hierarchy?.any {
             it.route == screen.route
         } == true,
-        unselectedContentColor = Color.Gray,
+        unselectedContentColor = Color.White,
+        selectedContentColor = YellowPrimary,
         modifier = Modifier.background(MaroonPrimary),
         onClick = {
             navController.navigate(screen.route) {
                 popUpTo(navController.graph.findStartDestination().id)
                 launchSingleTop = true
             }
-        }
+        },
     )
 }
 

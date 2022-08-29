@@ -35,17 +35,6 @@ fun FilmsScreen(
         modifier = Modifier.fillMaxSize()
             .background(YellowPrimary)
     ) {
-        TopAppBar(
-            backgroundColor = MaroonPrimary,
-            title = {
-                Text(
-                    text = "Star Wars Films",
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Medium,
-                    color = Color.White
-                )
-            },
-        )
         Box(
             modifier = Modifier.fillMaxSize()
                 .background(Color(0xFFEAE6E7)),
