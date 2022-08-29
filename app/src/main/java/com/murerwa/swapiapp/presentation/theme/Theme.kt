@@ -1,4 +1,4 @@
-package com.murerwa.swapiapp.presentation.ui.theme
+package com.murerwa.swapiapp.presentation.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
