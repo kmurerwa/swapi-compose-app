@@ -1,5 +1,7 @@
 package com.murerwa.swapiapp.data.di
 
+import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo3.network.okHttpClient
 import com.google.gson.GsonBuilder
 import com.murerwa.swapiapp.data.network.Urls
 import com.murerwa.swapiapp.presentation.di.presentationModules
@@ -40,6 +42,13 @@ private val networkingModules: Module = module {
             .baseUrl(Urls.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(get())
+            .build()
+    }
+
+    single {
+        ApolloClient.Builder()
+            .serverUrl(Urls.BASE_URL)
+            .okHttpClient(get())
             .build()
     }
 }

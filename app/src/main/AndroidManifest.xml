@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.murerwa.swapiapp">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".presentation.app.MyApplication"
         android:allowBackup="true"

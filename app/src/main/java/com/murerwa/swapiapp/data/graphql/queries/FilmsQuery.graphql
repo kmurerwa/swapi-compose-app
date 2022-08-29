@@ -1,0 +1,12 @@
+query FilmsQuery {
+    allFilms {
+        films {
+            id
+            title
+            releaseDate
+            director
+            producers
+            openingCrawl
+        }
+    }
+}
