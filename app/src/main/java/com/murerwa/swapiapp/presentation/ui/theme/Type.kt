@@ -1,4 +1,4 @@
-package com.murerwa.swapiapp.ui.theme
+package com.murerwa.swapiapp.presentation.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

@@ -1,4 +1,4 @@
-package com.murerwa.swapiapp
+package com.murerwa.swapiapp.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.murerwa.swapiapp.ui.theme.SWAPIAppTheme
+import com.murerwa.swapiapp.presentation.ui.theme.SWAPIAppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
