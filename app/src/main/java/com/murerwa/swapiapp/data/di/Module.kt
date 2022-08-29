@@ -4,6 +4,8 @@ import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.network.okHttpClient
 import com.google.gson.GsonBuilder
 import com.murerwa.swapiapp.data.network.Urls
+import com.murerwa.swapiapp.data.repository.FilmsRepositoryImpl
+import com.murerwa.swapiapp.domain.repository.FilmsRepository
 import com.murerwa.swapiapp.presentation.di.presentationModules
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -15,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 private val repositoryModules: Module = module {
-//    single <CharactersRepository> { CharactersRepositoryImpl(get()) }
+    single <FilmsRepository> { FilmsRepositoryImpl(get()) }
 }
 
 private val networkingModules: Module = module {

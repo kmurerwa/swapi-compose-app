@@ -1,8 +1,9 @@
 package com.murerwa.swapiapp.presentation.di
 
+import com.murerwa.swapiapp.presentation.screens.film.FilmViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val presentationModules = module {
-//    viewModel { CharactersViewModel(get()) }
-//    viewModel { CharacterDetailsViewModel(get()) }
+    viewModel { FilmViewModel(get()) }
 }
