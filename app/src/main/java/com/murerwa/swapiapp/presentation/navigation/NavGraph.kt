@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.murerwa.swapiapp.presentation.screens.film.HomeScreen
+import com.murerwa.swapiapp.presentation.screens.films.HomeScreen
 
 @Composable
 fun SetUpNavGraph(

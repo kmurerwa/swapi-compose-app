@@ -1,4 +1,4 @@
-package com.murerwa.swapiapp.presentation.screens.film
+package com.murerwa.swapiapp.presentation.screens.films
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -20,9 +19,8 @@ import com.murerwa.swapiapp.data.network.UIState
 import com.murerwa.swapiapp.presentation.common.ErrorScreen
 import com.murerwa.swapiapp.presentation.theme.YellowPrimary
 import org.koin.androidx.compose.getViewModel
-import timber.log.Timber
 import com.murerwa.swapiapp.R
-import com.murerwa.swapiapp.presentation.screens.film.card.FilmCard
+import com.murerwa.swapiapp.presentation.screens.films.cards.FilmCard
 import com.murerwa.swapiapp.presentation.theme.MaroonPrimary
 
 @Composable

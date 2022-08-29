@@ -1,4 +1,4 @@
-package com.murerwa.swapiapp.presentation.screens.film
+package com.murerwa.swapiapp.presentation.screens.films
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf

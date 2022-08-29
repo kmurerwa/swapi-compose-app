@@ -1,4 +1,4 @@
-package com.murerwa.swapiapp.presentation.screens.film.card
+package com.murerwa.swapiapp.presentation.screens.films.cards
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
