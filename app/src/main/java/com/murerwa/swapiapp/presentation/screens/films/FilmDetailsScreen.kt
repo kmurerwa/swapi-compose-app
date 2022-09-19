@@ -2,7 +2,6 @@ package com.murerwa.swapiapp.presentation.screens.films
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -12,23 +11,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.murerwa.swapiapp.FilmsQuery
 import com.murerwa.swapiapp.R
 import com.murerwa.swapiapp.data.network.UIState
 import com.murerwa.swapiapp.presentation.common.CustomTopAppBar
 import com.murerwa.swapiapp.presentation.common.ErrorScreen
-import com.murerwa.swapiapp.presentation.navigation.NavScreens
-import com.murerwa.swapiapp.presentation.screens.films.cards.FilmCard
 import com.murerwa.swapiapp.presentation.theme.BackgroundMain
 import com.murerwa.swapiapp.presentation.theme.MaroonPrimary
 import com.murerwa.swapiapp.presentation.theme.OrangePrimary
 import com.murerwa.swapiapp.presentation.utils.getYear
 import org.koin.androidx.compose.getViewModel
-import timber.log.Timber
 
 @Composable
 fun FilmDetailsScreen(
@@ -40,8 +34,7 @@ fun FilmDetailsScreen(
         viewModel.getFilmDetails(filmId)
     }
 
-    val state =
-        viewModel.filmDetailsResponse.value
+    val state = viewModel.filmDetailsResponse.value
 
     Column(
         modifier = Modifier.fillMaxWidth()
