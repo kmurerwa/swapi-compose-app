@@ -3,9 +3,13 @@ package com.murerwa.swapiapp.presentation.navigation
 import com.murerwa.swapiapp.presentation.navigation.ArgumentKeys.ID_ARGUMENT_KEY
 
 sealed class NavScreens(
-    val route: String
+    val route: String,
+    val label: String
 ) {
-    object FilmDetail: NavScreens(route = "detail_screen/{$ID_ARGUMENT_KEY}") {
+    object FilmDetail: NavScreens(
+        route = "detail_screen/{$ID_ARGUMENT_KEY}",
+        label = "Film Detail"
+    ) {
         fun passId(id: String?): String {
             return this.route.replace("{$ID_ARGUMENT_KEY}", id ?: "")
         }

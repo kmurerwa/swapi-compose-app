@@ -36,67 +36,57 @@ fun FilmDetailsScreen(
 
     val state = viewModel.filmDetailsResponse.value
 
-    Column(
-        modifier = Modifier.fillMaxWidth()
+    Box(
+        modifier = Modifier.fillMaxSize()
+            .background(BackgroundMain),
+        contentAlignment = Alignment.Center,
     ) {
-        CustomTopAppBar(
-            title = "Details",
-            onBackClick = {
-                navController.popBackStack()
+        when (state) {
+            is UIState.Loading -> {
+                CircularProgressIndicator()
             }
-        )
-        Box(
-            modifier = Modifier.fillMaxSize()
-                .background(BackgroundMain),
-            contentAlignment = Alignment.Center,
-        ) {
-            when (state) {
-                is UIState.Loading -> {
-                    CircularProgressIndicator()
-                }
-                is UIState.Success -> {
-                    val film = state.value?.film
+            is UIState.Success -> {
+                val film = state.value?.film
 
-                    if (film == null) {
-                        ErrorScreen(
-                            message = "Could not fetch film details",
+                if (film == null) {
+                    ErrorScreen(
+                        message = "Could not fetch film details",
+                    )
+                } else {
+                    Column(
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        Text(
+                            text = "${film.title}",
+                            modifier = Modifier.fillMaxWidth(),
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 22.sp,
+                            color = OrangePrimary
                         )
-                    } else {
-                        Column(
-                            modifier = Modifier.fillMaxSize()
-                        ) {
-                            Text(
-                                text = "${film.title}",
-                                modifier = Modifier.fillMaxWidth(),
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 22.sp,
-                                color = OrangePrimary
-                            )
-                            Text(
-                                text = "${film.releaseDate?.getYear()}",
-                                modifier = Modifier.fillMaxWidth(),
-                                fontSize = 18.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = MaroonPrimary
-                            )
-                            Text(
-                                text = "Directed by ${film.director}",
-                                color = Color.Black,
-                                fontStyle = FontStyle.Italic
-                            )
-                        }
+                        Text(
+                            text = "${film.releaseDate?.getYear()}",
+                            modifier = Modifier.fillMaxWidth(),
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = MaroonPrimary
+                        )
+                        Text(
+                            text = "Directed by ${film.director}",
+                            color = Color.Black,
+                            fontStyle = FontStyle.Italic
+                        )
                     }
                 }
-                is UIState.Error -> {
-                    if (state.isNetworkError) {
-                        ErrorScreen(
-                            message = "We encountered a network error. " +
-                                    "Please check your internet connection and try again.",
-                            imageDrawable = R.drawable.ic_error_internet
-                        )
-                    } else {
-                        ErrorScreen(message = "Sorry. Something went wrong while loading the data.")
-                    }
+            }
+            is UIState.Error -> {
+                if (state.isNetworkError) {
+                    ErrorScreen(
+                        message = "We encountered a network error. " +
+                                "Please check your internet connection and try again.",
+                        imageDrawable = R.drawable.ic_error_internet
+                    )
+                } else {
+                    ErrorScreen(message = "Sorry. Something went wrong while loading the data.")
                 }
             }
         }

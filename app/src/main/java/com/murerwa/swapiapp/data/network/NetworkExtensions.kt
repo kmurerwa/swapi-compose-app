@@ -1,5 +1,6 @@
 package com.murerwa.swapiapp.data.network
 
+import com.murerwa.swapiapp.presentation.utils.capitalizeString
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import java.util.*
@@ -26,8 +27,4 @@ fun ResponseBody?.readError(): String? {
     } catch (_: Exception) {
         null
     }
-}
-
-fun String.capitalizeString(): String {
-    return this.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
 }

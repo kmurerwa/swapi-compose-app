@@ -15,16 +15,45 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.murerwa.swapiapp.presentation.common.CustomTopAppBar
+import com.murerwa.swapiapp.presentation.common.HomeTopAppBar
 import com.murerwa.swapiapp.presentation.navigation.BottomBarScreen
 import com.murerwa.swapiapp.presentation.navigation.BottomNavGraph
 import com.murerwa.swapiapp.presentation.theme.MaroonPrimary
 import com.murerwa.swapiapp.presentation.theme.YellowPrimary
+import com.murerwa.swapiapp.presentation.utils.capitalizeString
 
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
 
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentDestination = navBackStackEntry?.destination
+
+    val isHomeScreen = currentDestination?.hierarchy?.any { it.route in listOf(
+        BottomBarScreen.Films.route,
+        BottomBarScreen.Characters.route,
+        BottomBarScreen.Planets.route,
+        BottomBarScreen.Starships.route
+    ) } ?: false
+
+    val title = currentDestination?.route?.capitalizeString() ?: "Star Wars"
+
     Scaffold(
+        topBar = {
+            if (isHomeScreen) {
+                HomeTopAppBar(
+                    title = title,
+                )
+            } else {
+                CustomTopAppBar(
+                    title = title,
+                    onBackClick = {
+                        navController.popBackStack()
+                    }
+                )
+            }
+        },
         bottomBar = {
             BottomBar(navController = navController)
         }
