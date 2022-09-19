@@ -1,4 +1,4 @@
-package com.murerwa.swapiapp.presentation.common
+package com.murerwa.swapiapp.presentation.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
