@@ -4,8 +4,14 @@ import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.network.okHttpClient
 import com.google.gson.GsonBuilder
 import com.murerwa.swapiapp.data.network.Urls
+import com.murerwa.swapiapp.data.repository.CharactersRepositoryImpl
 import com.murerwa.swapiapp.data.repository.FilmsRepositoryImpl
+import com.murerwa.swapiapp.data.repository.PlanetsRepositoryImpl
+import com.murerwa.swapiapp.data.repository.StarshipsRepositoryImpl
+import com.murerwa.swapiapp.domain.repository.CharactersRepository
 import com.murerwa.swapiapp.domain.repository.FilmsRepository
+import com.murerwa.swapiapp.domain.repository.PlanetsRepository
+import com.murerwa.swapiapp.domain.repository.StarshipsRepository
 import com.murerwa.swapiapp.presentation.di.presentationModules
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -17,7 +23,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 private val repositoryModules: Module = module {
-    single <FilmsRepository> { FilmsRepositoryImpl(get()) }
+    single <FilmsRepository>{ FilmsRepositoryImpl(get()) }
+    single <CharactersRepository> { CharactersRepositoryImpl(get()) }
+    single <PlanetsRepository> { PlanetsRepositoryImpl(get()) }
+    single <StarshipsRepository> { StarshipsRepositoryImpl(get()) }
 }
 
 private val networkingModules: Module = module {
@@ -35,18 +44,6 @@ private val networkingModules: Module = module {
             .build()
     }
 
-    single<Retrofit> {
-        val gson = GsonBuilder()
-            .serializeNulls()
-            .create()
-
-        Retrofit.Builder()
-            .baseUrl(Urls.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .client(get())
-            .build()
-    }
-
     single {
         ApolloClient.Builder()
             .serverUrl(Urls.BASE_URL)
@@ -55,12 +52,7 @@ private val networkingModules: Module = module {
     }
 }
 
-val apiModules: Module = module {
-//    single<ApiClient> { get<Retrofit>().create(ApiClient::class.java) }
-}
-
 val dataModules: List<Module> = listOf(
     repositoryModules,
-    networkingModules,
-    apiModules,
+    networkingModules
 )

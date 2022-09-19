@@ -1,0 +1,12 @@
+query PlanetsQuery {
+    allPlanets {
+        planets {
+            id
+            name
+            population
+            orbitalPeriod
+            diameter
+            rotationPeriod
+        }
+    }
+}

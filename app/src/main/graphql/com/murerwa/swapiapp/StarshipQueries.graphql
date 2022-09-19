@@ -1,0 +1,32 @@
+query StarshipsQuery {
+    allStarships {
+        starships {
+            id
+            name
+            model
+            starshipClass
+            hyperdriveRating
+            costInCredits
+            cargoCapacity
+            crew
+        }
+    }
+}
+
+query StarshipDetailsQuery($starshipId: ID!) {
+    starship(id: $starshipId) {
+        id
+        name
+        model
+        manufacturers
+        cargoCapacity
+        MGLT
+        costInCredits
+        passengers
+        starshipClass
+        length
+        hyperdriveRating
+        crew
+    }
+}
+

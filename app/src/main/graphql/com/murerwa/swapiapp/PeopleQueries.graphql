@@ -1,0 +1,41 @@
+query CharactersQuery {
+    allPeople {
+        people {
+            id
+            name
+            birthYear
+            gender
+            height
+            species {
+                id
+                name
+                homeworld {
+                    id
+                    name
+                    population
+                }
+            }
+        }
+    }
+}
+
+query CharacterDetailsQuery($id: ID!) {
+    person(id: $id) {
+        id
+        name
+        id
+        name
+        birthYear
+        gender
+        height
+        species {
+            id
+            name
+            homeworld {
+                id
+                name
+                population
+            }
+        }
+    }
+}
