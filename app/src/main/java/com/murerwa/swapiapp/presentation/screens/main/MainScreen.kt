@@ -1,7 +1,10 @@
 package com.murerwa.swapiapp.presentation.screens.main
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -9,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -27,24 +31,14 @@ fun MainScreen() {
     val navController = rememberNavController()
 
     Scaffold(
-//        topBar = {
-//            TopAppBar(
-//                backgroundColor = MaroonPrimary,
-//                title = {
-//                    Text(
-//                        text = "",
-//                        fontSize = 24.sp,
-//                        fontWeight = FontWeight.Medium,
-//                        color = Color.White
-//                    )
-//                },
-//            )
-//        },
         bottomBar = {
             BottomBar(navController = navController)
         }
-    ) {
-        BottomNavGraph(navController)
+    ){ innerPadding ->
+        // Apply the padding globally to the whole BottomNavScreensController
+        Box(modifier = Modifier.padding(innerPadding)) {
+            BottomNavGraph(navController)
+        }
     }
 }
 

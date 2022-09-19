@@ -13,9 +13,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             SWAPIAppTheme {
-//                val navController = rememberNavController()
-//
-//                SetUpNavGraph(navController = navController)
                 MainScreen()
             }
         }

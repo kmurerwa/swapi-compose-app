@@ -8,11 +8,17 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.murerwa.swapiapp.FilmsQuery
+import com.murerwa.swapiapp.presentation.theme.MaroonPrimary
+import com.murerwa.swapiapp.presentation.theme.OrangePrimary
+import com.murerwa.swapiapp.presentation.utils.getYear
 
 @Composable
 fun FilmCard(
@@ -22,7 +28,8 @@ fun FilmCard(
         elevation = 0.dp,
         modifier = Modifier.fillMaxWidth()
             .padding(top = 8.dp, bottom = 2.dp, start = 8.dp, end = 8.dp),
-        shape = RoundedCornerShape(8.dp)
+        shape = RoundedCornerShape(8.dp),
+        backgroundColor = Color.White
     ) {
         Row(
             modifier = Modifier.fillMaxWidth()
@@ -43,16 +50,20 @@ fun FilmCard(
                     text = "${film?.title}",
                     modifier = Modifier.fillMaxWidth(),
                     fontWeight = FontWeight.Bold,
-                    fontSize = 22.sp
+                    fontSize = 22.sp,
+                    color = OrangePrimary
                 )
                 Text(
-                    text = "${film?.releaseDate}",
+                    text = "${film?.releaseDate?.getYear()}",
                     modifier = Modifier.fillMaxWidth(),
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
+                    color = MaroonPrimary
                 )
                 Text(
-                    text = "${film?.director}"
+                    text = "Directed by ${film?.director}",
+                    color = Color.Black,
+                    fontStyle = FontStyle.Italic
                 )
             }
         }

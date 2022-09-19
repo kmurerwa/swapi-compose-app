@@ -14,6 +14,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.murerwa.swapiapp.R
+import com.murerwa.swapiapp.presentation.theme.MaroonPrimary
 
 @Composable
 fun ErrorScreen(
@@ -45,7 +46,9 @@ fun ErrorScreen(
                 text = message,
                 fontSize = 18.sp,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth().align(Alignment.CenterHorizontally)
+                modifier = Modifier.fillMaxWidth()
+                    .align(Alignment.CenterHorizontally),
+                color = MaroonPrimary
             )
         }
     }
