@@ -35,7 +35,6 @@ fun StarshipCard(
         ) {
             Column(
                 modifier = Modifier.fillMaxWidth()
-                    .height(100.dp)
                     .align(Alignment.CenterVertically)
                     .padding(start = 10.dp),
                 verticalArrangement = Arrangement.SpaceBetween

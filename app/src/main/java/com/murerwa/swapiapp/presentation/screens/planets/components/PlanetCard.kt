@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.sp
 import com.murerwa.swapiapp.PlanetsQuery
 import com.murerwa.swapiapp.presentation.theme.MaroonPrimary
 import com.murerwa.swapiapp.presentation.theme.OrangePrimary
+import com.murerwa.swapiapp.presentation.utils.commaSeparated
 
 @Composable
 fun PlanetCard(
@@ -34,9 +35,7 @@ fun PlanetCard(
         ) {
             Column(
                 modifier = Modifier.fillMaxWidth()
-                    .height(100.dp)
-                    .align(Alignment.CenterVertically)
-                    .padding(start = 10.dp),
+                    .align(Alignment.CenterVertically),
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
@@ -47,11 +46,15 @@ fun PlanetCard(
                     color = OrangePrimary
                 )
                 Text(
-                    text = "${planet?.population ?: 0}",
+                    text = "1 year is ${planet?.orbitalPeriod ?: 0} days here",
                     modifier = Modifier.fillMaxWidth(),
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaroonPrimary
+                )
+                Text(
+                    text = "${(planet?.population ?: 0).commaSeparated()} population",
+                    color = Color.Black,
                 )
             }
         }
