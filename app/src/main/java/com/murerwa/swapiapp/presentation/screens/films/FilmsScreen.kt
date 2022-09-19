@@ -9,6 +9,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,7 +22,9 @@ import com.murerwa.swapiapp.presentation.common.ErrorScreen
 import com.murerwa.swapiapp.presentation.theme.YellowPrimary
 import org.koin.androidx.compose.getViewModel
 import com.murerwa.swapiapp.R
+import com.murerwa.swapiapp.presentation.navigation.NavScreens
 import com.murerwa.swapiapp.presentation.screens.films.cards.FilmCard
+import com.murerwa.swapiapp.presentation.theme.BackgroundMain
 import com.murerwa.swapiapp.presentation.theme.MaroonPrimary
 import com.murerwa.swapiapp.presentation.utils.getYear
 
@@ -35,7 +38,7 @@ fun FilmsScreen(
 
     Box(
         modifier = Modifier.fillMaxSize()
-            .background(Color(0xFFEAE6E7)),
+            .background(BackgroundMain),
         contentAlignment = Alignment.Center,
     ) {
         when (state) {
@@ -58,6 +61,11 @@ fun FilmsScreen(
 
                             FilmCard(
                                 film = film,
+                                onClick = {
+                                    navController.navigate(
+                                        route = NavScreens.FilmDetail.passId(film?.id)
+                                    )
+                                }
                             )
                         }
                     }

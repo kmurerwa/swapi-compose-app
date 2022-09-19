@@ -1,5 +1,6 @@
 package com.murerwa.swapiapp.presentation.screens.films.cards
 
+import android.service.autofill.OnClickAction
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,7 +23,8 @@ import com.murerwa.swapiapp.presentation.utils.getYear
 
 @Composable
 fun FilmCard(
-    film: FilmsQuery.Film?
+    film: FilmsQuery.Film?,
+    onClick: (FilmsQuery.Film?) -> Unit
 ) {
     Card(
         elevation = 0.dp,
@@ -35,7 +37,7 @@ fun FilmCard(
             modifier = Modifier.fillMaxWidth()
                 .padding(all = 10.dp)
                 .clickable {
-
+                    onClick(film)
                 },
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
@@ -74,5 +76,5 @@ fun FilmCard(
 @Composable
 @Preview(showBackground = true)
 fun FilmCardPreview() {
-    FilmCard(null)
+    FilmCard(null) {}
 }

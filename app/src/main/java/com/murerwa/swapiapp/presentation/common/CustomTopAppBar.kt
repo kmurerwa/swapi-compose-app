@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import com.murerwa.swapiapp.presentation.theme.MaroonPrimary
 
 @Composable
 fun CustomTopAppBar(
@@ -30,10 +31,12 @@ fun CustomTopAppBar(
             ) {
                 Icon(
                     Icons.Filled.ArrowBack,
-                    contentDescription = "Back arrow icon"
+                    contentDescription = "Back arrow icon",
+                    tint = Color.White,
                 )
             }
         },
+        backgroundColor = MaroonPrimary
     )
 }
 

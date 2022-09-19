@@ -4,6 +4,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.murerwa.swapiapp.FilmDetailsQuery
 import com.murerwa.swapiapp.FilmsQuery
 import com.murerwa.swapiapp.data.network.NetworkResult
 import com.murerwa.swapiapp.data.network.UIState
@@ -19,6 +20,10 @@ class FilmViewModel(
     private val _filmsResponse: MutableState<UIState<FilmsQuery.Data?>> = mutableStateOf(
         UIState.Loading)
     val filmsResponse = _filmsResponse
+
+    private val _filmDetailsResponse: MutableState<UIState<FilmDetailsQuery.Data?>> = mutableStateOf(
+        UIState.Loading)
+    val filmDetailsResponse = _filmDetailsResponse
 
     init {
         getFilms()
@@ -49,6 +54,35 @@ class FilmViewModel(
                             Timber.d("Response is Null")
                             _filmsResponse.value = UIState.Error("Error fetching films")
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    fun getFilmDetails(filmId: String) = viewModelScope.launch {
+        when (val response = filmsRepository.getFilmDetails(filmId)) {
+            is NetworkResult.Success -> {
+                val apolloResponse = response.value.data
+
+                _filmDetailsResponse.value = UIState.Success(apolloResponse)
+            }
+            is NetworkResult.Failure -> {
+                if (response.isNetworkError) {
+                    _filmDetailsResponse.value = UIState.Error("Network error")
+                } else {
+                    if (response.errorBody != null) {
+                        Timber.d("Response is Not Null")
+                        val error = response.errorBody.readError()
+                        if (!error.isNullOrEmpty()) {
+                            _filmDetailsResponse.value = UIState.Error(error)
+                        } else {
+                            _filmDetailsResponse.value = UIState.Error("Error fetching films")
+                        }
+
+                    } else {
+                        Timber.d("Response is Null")
+                        _filmDetailsResponse.value = UIState.Error("Error fetching films")
                     }
                 }
             }

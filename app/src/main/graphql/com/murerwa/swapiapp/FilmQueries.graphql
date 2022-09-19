@@ -10,3 +10,14 @@ query FilmsQuery {
         }
     }
 }
+
+query FilmDetailsQuery($id: ID!) {
+    film(id: $id) {
+        id
+        title
+        releaseDate
+        director
+        producers
+        openingCrawl
+    }
+}
