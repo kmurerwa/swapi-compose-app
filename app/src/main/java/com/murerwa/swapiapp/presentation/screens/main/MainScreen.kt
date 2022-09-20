@@ -1,14 +1,18 @@
 package com.murerwa.swapiapp.presentation.screens.main
 
+import androidx.compose.animation.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -39,6 +43,8 @@ fun MainScreen() {
 
     val title = getRouteLabel(currentDestination?.route ?: BottomBarScreen.Films.route)
 
+    val density = LocalDensity.current
+
     Scaffold(
         topBar = {
             if (isHomeScreen) {
@@ -55,7 +61,9 @@ fun MainScreen() {
             }
         },
         bottomBar = {
-            BottomBar(navController = navController)
+            if (isHomeScreen) {
+                BottomBar(navController = navController)
+            }
         }
     ){ innerPadding ->
         // Apply the padding globally to the whole BottomNavScreensController

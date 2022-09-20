@@ -14,6 +14,7 @@ import com.murerwa.swapiapp.data.network.UIState
 import com.murerwa.swapiapp.presentation.common.ErrorScreen
 import org.koin.androidx.compose.getViewModel
 import com.murerwa.swapiapp.R
+import com.murerwa.swapiapp.presentation.navigation.AppScreens.NavScreens
 import com.murerwa.swapiapp.presentation.screens.films.components.FilmCard
 import com.murerwa.swapiapp.presentation.theme.BackgroundMain
 
