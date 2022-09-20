@@ -13,7 +13,7 @@ I used the following technologies to complete the app
 - The [Star Wars GraphQL API (simple SWAPI)](https://studio.apollographql.com/public/star-wars-swapi/explorer?variant=current). 
 
 ## App in Action
-https://user-images.githubusercontent.com/18438114/191325202-82ba92ce-b4d5-4d65-a4a7-3de258c674da.mp4
+[Video Preview](https://user-images.githubusercontent.com/18438114/191325202-82ba92ce-b4d5-4d65-a4a7-3de258c674da.mp4)
 
 ## Sign Off
 Feel free to leave a PR if you think something would have worked better if done another way.
