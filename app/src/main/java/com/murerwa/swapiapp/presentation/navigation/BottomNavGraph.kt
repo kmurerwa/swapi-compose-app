@@ -6,7 +6,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.apollographql.apollo3.api.label
+import com.murerwa.swapiapp.presentation.navigation.AppScreens.BottomBarScreen
+import com.murerwa.swapiapp.presentation.navigation.AppScreens.NavScreens
 import com.murerwa.swapiapp.presentation.navigation.ArgumentKeys.ID_ARGUMENT_KEY
 import com.murerwa.swapiapp.presentation.screens.characters.CharactersScreen
 import com.murerwa.swapiapp.presentation.screens.films.FilmDetailsScreen

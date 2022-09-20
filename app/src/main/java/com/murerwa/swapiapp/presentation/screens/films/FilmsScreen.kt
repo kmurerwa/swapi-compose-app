@@ -8,14 +8,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.murerwa.swapiapp.data.network.UIState
 import com.murerwa.swapiapp.presentation.common.ErrorScreen
 import org.koin.androidx.compose.getViewModel
 import com.murerwa.swapiapp.R
-import com.murerwa.swapiapp.presentation.navigation.NavScreens
 import com.murerwa.swapiapp.presentation.screens.films.components.FilmCard
 import com.murerwa.swapiapp.presentation.theme.BackgroundMain
 
