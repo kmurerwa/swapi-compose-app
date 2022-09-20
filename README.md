@@ -10,7 +10,7 @@ I used the following technologies to complete the app
 - Jetpack Compose.
 - Koin Dependency Injection.
 - Timber for logging.
-- The [Star Wars GraphQL API (simple SWAPI)](https://studio.apollographql.com/public/star-wars-swapi/explorer?variant=current). 
+- The [Star Wars GraphQL API](https://studio.apollographql.com/public/star-wars-swapi/explorer?variant=current). 
 
 ## App in Action
 https://user-images.githubusercontent.com/18438114/191325712-507bdd16-43af-4476-841c-9837eb3c56de.mp4
